@@ -1,0 +1,39 @@
+<div class="container">
+    <div class="row align-items-start">
+        <div class="col">
+            <h2>Event Registration: {{event.name}}</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+            <div class="col-md-6 form-group">Event Name:
+                    <div class="font-italic"> {{event.name}}</div></div>
+            <div class="col-md-6 form-group">Category:
+                 <div class="font-italic">{{event.category}}</div></div>
+            <div class="col-md-6 form-group">Location: 
+                    <div class="font-italic">{{event.location}}</div></div>
+            <div class="col-md-6 form-group">Start Date: 
+                    <div class="font-italic">{{event.startDate | date: 'MMM d, y h:mm a'}}</div></div>
+            <div class="col-md-6 form-group">End Date: 
+                    <div class="font-italic">{{event.endDate | date: 'MMM d, y h:mm a'}}</div></div>
+        </div>
+        <div class="col no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                <div class="col-md-6 form-group">Description:
+                        <div class="font-italic"> {{event.description}}</div></div>
+                <div class="col-md-6 form-group">Adult Ticket Price: 
+                        <div class="font-italic">${{event.adultTicketPrice}}</div></div>
+                <div class="col-md-6 form-group">Child Ticket Price:
+                        <div class="font-italic"> ${{event.childTicketPrice}}</div></div>
+        </div>
+        <div class="col no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                <div class="col">       
+                    <img src="{{event.eventImage}}" style="width:350px;height:350px;border:0;">
+                </div>
+        </div>
+    </div>
+    <div class="row align-items-end">
+        <div class="col no-gutters border rounded shadow-sm text-center">
+            <a *ngIf="event.registrationAllowed" (click)="startRegistration()" class="text-danger">Register For Event</a>
+        </div>
+    </div>
+</div>

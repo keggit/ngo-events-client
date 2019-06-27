@@ -1,0 +1,69 @@
+<h2>Register for {{event.name}}</h2>
+<form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <div class="row">
+    <div class="col no-gutters overflow-hidden flex-md-row mb-4 h-md-250 position-relative">
+    <div class="form-group">
+        <label for="firstName">First Name</label>
+        <input type="text" value="{{currentUser.firstName}}" formControlName="firstName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }" />
+        <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
+            <div *ngIf="f.firstName.errors.required">First Name is required</div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="lastName">Last Name</label>
+        <input type="text" value="{{currentUser.lastName}}" formControlName="lastName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }" />
+        <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
+            <div *ngIf="f.lastName.errors.required">Last name is required</div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="userEmail">Email</label>
+        <input type="text" value="{{currentUser.email}}" formControlName="userEmail" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.userEmail.errors }" />
+        <div *ngIf="submitted && f.userEmail.errors" class="invalid-feedback">
+            <div *ngIf="f.userEmail.errors.required">Email is required</div>
+            <div *ngIf="f.userEmail.errors.email">Email must follow the format "email@website"</div>
+        </div>
+    </div>
+        <div class="form-group">
+            <label for="phone">Phone Number</label>
+            <input type="text" formControlName="phone" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.phone.errors }" />
+            <div *ngIf="submitted && f.phone.errors" class="invalid-feedback">
+                <div *ngIf="f.phone.errors.required">Phone Number is required</div>
+                <div *ngIf="f.phone.errors.pattern">10 digit phone number</div>
+            </div>
+    </div>
+</div>
+<div class="col no-gutters  overflow-hidden flex-md-row mb-4 h-md-250 position-relative">
+    <div class="form-group">
+            <label for="address">Address</label>
+            <input type="text" formControlName="address" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.address.errors }" />
+            <div *ngIf="submitted && f.address.errors" class="invalid-feedback">
+                <div *ngIf="f.address.errors.required">Address is required</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="adultQuantity">Number of Adult Tickets</label>
+            <input type="text" value="0" formControlName="adultQuantity" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.adultQuantity.errors }" />
+            <div *ngIf="submitted && f.adultQuantity.errors" class="invalid-feedback">
+                <div *ngIf="f.adultQuantity.errors.required">Please enter amount of adult tickets</div>
+                <div *ngIf="f.adultQuantity.errors.min">Minimum of 0 tickets</div>
+                <div *ngIf="f.adultQuantity.errors.max">Maximum of 10 tickets, please contact organizer for larger parties</div>
+            </div>
+        </div>
+            <div class="form-group">
+                <label for="childQuantity">Number of Child Tickets</label>
+                <input type="text" value="0" formControlName="childQuantity" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.childQuantity.errors }" />
+                <div *ngIf="submitted && f.childQuantity.errors" class="invalid-feedback">
+                    <div *ngIf="f.childQuantity.errors.required">Please enter amount of child tickets</div>
+                    <div *ngIf="f.childQuantity.errors.min">Minimum of 0 tickets</div>
+                    <div *ngIf="f.childQuantity.errors.max">Maximum of 10 tickets, please contact organizer for larger parties</div>
+                </div>
+        </div>   
+    </div>   
+    </div>  
+    <div class="form-group">
+        <button [disabled]="loading" class="btn btn-primary">Register</button>
+        <img *ngIf="loading" class="pl-3" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+        <a routerLink="/" class="btn btn-link">Cancel</a>
+    </div>
+</form>

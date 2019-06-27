@@ -1,0 +1,13 @@
+﻿<h2>Event Registration</h2>
+<table class="table">
+    <thead>
+          <tr>
+            <th *ngFor="let event of events" (click)="goToDetail(event.id)"><img  src="{{event.eventImage}}" style="width:190px;height:190px;border:1;" ></th>
+          </tr>
+    </thead>
+    <tbody>
+          <tr>
+            <th *ngFor="let event of events" (click)="goToDetail(event.id)">{{event.name}}: {{event.location}}</th>
+          </tr>
+    </tbody>
+</table>

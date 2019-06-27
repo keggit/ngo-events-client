@@ -1,0 +1,82 @@
+<h2>Create a New Event</h2>
+<form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" formControlName="name" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.name.errors }" />
+        <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+            <div *ngIf="f.name.errors.required">Name is required</div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="description">Description</label>
+        <input type="text" formControlName="description" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.description.errors }" />
+        <div *ngIf="submitted && f.description.errors" class="invalid-feedback">
+            <div *ngIf="f.description.errors.required">Description is required</div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="category">Category</label>
+        <input type="text" formControlName="category" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.category.errors }" />
+        <div *ngIf="submitted && f.category.errors" class="invalid-feedback">
+            <div *ngIf="f.category.errors.required">Category is required</div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="startDate">Start Date (YYYY-MM-DD HH:MM)</label>
+        <input type="datetime" formControlName="startDate" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.startDate.errors }" />
+        <div *ngIf="submitted && f.startDate.errors" class="invalid-feedback">
+            <div *ngIf="f.startDate.errors.required">Start Date is required</div>
+            <div *ngIf="f.startDate.errors.pattern">Date must follow pattern. Ex. 1974-12-04 14:32 which corresponds to December 4th, 1974 at 2:32 PM</div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="endDate">End Date (YYYY-MM-DD HH:MM)</label>
+        <input type="datetime" formControlName="endDate" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.endDate.errors }" />
+        <div *ngIf="submitted && f.endDate.errors" class="invalid-feedback">
+            <div *ngIf="f.endDate.errors.required">End Date is required</div>
+            <div *ngIf="error.isError" class="alert alert-danger">
+                {{ error.errorMessage }}</div>
+            <div *ngIf="f.endDate.errors.pattern">Date must follow pattern. Ex. 1974-12-04 14:32 which corresponds to December 4th, 1974 at 2:32 PM</div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="location">Location</label>
+        <input type="text" formControlName="location" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.location.errors }" />
+        <div *ngIf="submitted && f.location.errors" class="invalid-feedback">
+            <div *ngIf="f.location.errors.required">Location is required</div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="registrationAllowed">Is Registration Allowed?</label>
+        <input type="checkbox" formControlName="registrationAllowed" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.registrationAllowed.errors }" />
+        <div *ngIf="submitted && f.registrationAllowed.errors" class="invalid-feedback">
+            <div *ngIf="f.registrationAllowed.errors.required">Pick One</div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="eventImage">Image Url</label>
+        <input type="text" formControlName="eventImage" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.eventImage.errors }" />
+        <div *ngIf="submitted && f.eventImage.errors" class="invalid-feedback">
+            <div *ngIf="f.eventImage.errors.required">Event Image Required</div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="adultTicketPrice">Adult Ticket Price</label>
+        <input type="number" formControlName="adultTicketPrice" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.adultTicketPrice.errors }" />
+        <div *ngIf="submitted && f.adultTicketPrice.errors" class="invalid-feedback">
+            <div *ngIf="f.adultTicketPrice.errors.required">Adult Ticket Price is Required</div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="childTicketPrice">Child Ticket Price</label>
+        <input type="number" formControlName="childTicketPrice" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.childTicketPrice.errors }" />
+        <div *ngIf="submitted && f.childTicketPrice.errors" class="invalid-feedback">
+            <div *ngIf="f.childTicketPrice.errors.required">Child Ticket Price is Required</div>
+        </div>
+    </div>
+    <div class="form-group">
+        <button [disabled]="loading" class="btn btn-primary">Register Event</button>
+        <img *ngIf="loading" class="pl-3" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+        <a routerLink="/event" class="btn btn-link">Cancel</a>
+    </div>
+</form>

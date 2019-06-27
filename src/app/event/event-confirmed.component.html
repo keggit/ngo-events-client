@@ -1,0 +1,10 @@
+<h1>Thanks for registering {{currentUser.firstName}} {{currentUser.lastName}}!</h1>
+<h3>Here are your registration details: </h3>
+<p>Event: {{tickets[0].eventName}}</p>
+<p>Tickets: {{tickets[0].adultQuantity}} adults and {{tickets[0].childQuantity}} children for a total cost of ${{tickets[0].childQuantity * events[0].childTicketPrice + tickets[0].adultQuantity * events[0].adultTicketPrice}}
+an email has been sent to {{tickets[0].userEmail}} confirming the payment.
+</p>
+
+<a routerLink="/" class="text-danger">Return Home</a>
+
+  

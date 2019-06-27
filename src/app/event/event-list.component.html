@@ -1,0 +1,26 @@
+<h2>Event List</h2> 
+<a (click)="addEvent()" class="text-danger">Add a new Event</a>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Event</th>
+      <th>Category</th>
+      <th>Location</th>
+      <th>Start Date</th>
+      <th>End Date</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let event of events">
+      <td> {{event.name}} </td>
+      <td> {{event.category}} </td>
+      <td> {{event.location}} </td>
+      <td> {{event.startDate | date: 'dd/MM/yyyy h:mm a'}} </td>
+      <td> {{event.endDate | date: 'dd/MM/yyyy h:mm a'}} </td>
+      <td><a (click)="editEvent(event.id)" class="text-danger">Edit </a></td>
+      <td><a (click)="deleteEvent(event.id)" class="text-danger">Delete</a></td>
+    </tr>
+  </tbody>
+</table>

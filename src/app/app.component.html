@@ -1,0 +1,30 @@
+﻿<!-- nav -->
+<nav class="navbar navbar-expand navbar-dark bg-dark" *ngIf="currentUser">
+    <div class="navbar-nav">
+        <a class="nav-item nav-link" routerLink="/">Ngo</a>
+        <a class="nav-item nav-link" routerLink="user list" *ngIf="isAdmin">User List</a>
+        <a class="nav-item nav-link" routerLink="event list" *ngIf="isAdmin">Event List</a>
+    </div>
+    <div class="navbar-nav ml-auto">
+        <a class="nav-item nav-link" (click)="logout()">({{currentUser.firstName}} {{currentUser.lastName}}) Logout</a>
+    </div>
+</nav>
+
+<div class="jumbotron">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-11 offset-sm-0">
+                <alert></alert>
+                <router-outlet></router-outlet>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- credits -->
+<div class="text-center">
+    <p>
+        <a>NGO Example</a>
+    </p>
+
+</div>
